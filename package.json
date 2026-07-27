@@ -32,7 +32,7 @@
         "@zyrouge/phrasey-json": "^1.0.3",
         "@zyrouge/phrasey-locales-builder": "^1.1.10",
         "@zyrouge/phrasey-toml": "^1.0.3",
-        "fs-extra": "^11.2.0",
+        "fs-extra": "^11.4.0",
         "phrasey": "^2.0.26",
         "picocolors": "^1.1.1",
         "prettier": "^3.4.1",
