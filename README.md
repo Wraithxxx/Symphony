@@ -33,7 +33,7 @@ Release builds are R8 optimized and require these environment variables:
 - `SIGNING_KEY_ALIAS`
 - `SIGNING_KEY_PASSWORD`
 
-Signing keys and local release credentials must never be committed.
+Release signing configuration is supplied through the local environment.
 
 ## License
 
