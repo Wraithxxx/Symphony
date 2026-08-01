@@ -1,0 +1,59 @@
+name: Android CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "app/**"
+      - "gradle/**"
+      - "i18n/**"
+      - ".phrasey/**"
+      - "*.gradle.kts"
+      - "gradle.properties"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/android.yml"
+  pull_request:
+    paths:
+      - "app/**"
+      - "gradle/**"
+      - "i18n/**"
+      - ".phrasey/**"
+      - "*.gradle.kts"
+      - "gradle.properties"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/android.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: zulu
+          java-version: 17
+          cache: gradle
+      - name: Install translation tooling
+        run: npm ci
+      - name: Generate translations
+        run: npm run prebuild
+      - name: Verify and build debug APK
+        run: |
+          chmod +x ./gradlew
+          ./gradlew :app:testDebugUnitTest :app:lintDebug :app:assembleDebug --no-daemon --console=plain
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: symphony-debug
+          path: app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error

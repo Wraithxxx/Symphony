@@ -1,0 +1,9 @@
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/ic_launcher_splash_wraith_vector">
+    <target android:name="bar1" android:animation="@animator/splash_bar_1_color" />
+    <target android:name="bar2" android:animation="@animator/splash_bar_2_color" />
+    <target android:name="bar3" android:animation="@animator/splash_bar_3_color" />
+    <target android:name="bar4" android:animation="@animator/splash_bar_4_color" />
+    <target android:name="bar5" android:animation="@animator/splash_bar_5_color" />
+    <target android:name="bar6" android:animation="@animator/splash_bar_6_color" />
+</animated-vector>

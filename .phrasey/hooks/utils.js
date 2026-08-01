@@ -4,7 +4,7 @@ const rootDir = p.resolve(__dirname, "../..");
 
 const appI18nDir = p.join(
     rootDir,
-    "app/src/main/java/io/github/zyrouge/symphony/services/i18n"
+    "app/src/main/java/io/github/wraithxxx/symphony/services/i18n"
 );
 
 const rootI18nDir = p.join(rootDir, "i18n");

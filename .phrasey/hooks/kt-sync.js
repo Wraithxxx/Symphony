@@ -30,7 +30,7 @@ async function createTranslationsKt(phrasey, state, log) {
         a.locale.display.localeCompare(b.locale.display),
     );
     const content = `
-package io.github.zyrouge.symphony.services.i18n
+package io.github.wraithxxx.symphony.services.i18n
 
 @Suppress("ClassName")
 open class _Translations {
@@ -90,7 +90,7 @@ async function createTranslationKt(phrasey, state, log) {
     }
 
     const content = `
-package io.github.zyrouge.symphony.services.i18n
+package io.github.wraithxxx.symphony.services.i18n
 
 import androidx.compose.runtime.Immutable
 import kotlinx.serialization.Serializable

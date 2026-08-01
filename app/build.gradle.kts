@@ -7,8 +7,20 @@ plugins {
     alias(libs.plugins.room)
 }
 
+val releaseSigningValues = mapOf(
+    "storeFile" to System.getenv("SIGNING_KEYSTORE_FILE"),
+    "storePassword" to System.getenv("SIGNING_KEYSTORE_PASSWORD"),
+    "keyAlias" to System.getenv("SIGNING_KEY_ALIAS"),
+    "keyPassword" to System.getenv("SIGNING_KEY_PASSWORD"),
+)
+val hasAnyReleaseSigningValue = releaseSigningValues.values.any { !it.isNullOrBlank() }
+val hasCompleteReleaseSigning = releaseSigningValues.values.all { !it.isNullOrBlank() }
+check(!hasAnyReleaseSigningValue || hasCompleteReleaseSigning) {
+    "Release signing configuration is incomplete. Provide all four signing values or none."
+}
+
 android {
-    namespace = "io.github.zyrouge.symphony"
+    namespace = "io.github.wraithxxx.symphony"
     compileSdk = libs.versions.compile.sdk.get().toInt()
 
     defaultConfig {
@@ -17,7 +29,7 @@ android {
         targetSdk = libs.versions.target.sdk.get().toInt()
 
         versionCode = 1
-        versionName = "2026.07.1"
+        versionName = "2026.08.01"
         versionName = System.getenv("APP_VERSION_NAME") ?: versionName
 
         vectorDrawables {
@@ -26,11 +38,13 @@ android {
     }
 
     signingConfigs {
-        register("release") {
-            storeFile = System.getenv("SIGNING_KEYSTORE_FILE")?.let { rootProject.file(it) }
-            storePassword = System.getenv("SIGNING_KEYSTORE_PASSWORD")
-            keyAlias = System.getenv("SIGNING_KEY_ALIAS")
-            keyPassword = System.getenv("SIGNING_KEY_PASSWORD")
+        if (hasCompleteReleaseSigning) {
+            register("release") {
+                storeFile = rootProject.file(releaseSigningValues.getValue("storeFile")!!)
+                storePassword = releaseSigningValues.getValue("storePassword")
+                keyAlias = releaseSigningValues.getValue("keyAlias")
+                keyPassword = releaseSigningValues.getValue("keyPassword")
+            }
         }
     }
 
@@ -54,7 +68,9 @@ android {
             applicationIdSuffix = ".canary"
         }
         getByName("debug") {
-            applicationIdSuffix = ".debug"
+            applicationIdSuffix = (findProperty("appDebugSuffix") as String?)
+                ?: System.getenv("APP_DEBUG_SUFFIX")
+                ?: ".debug"
             versionNameSuffix = "-debug"
         }
     }

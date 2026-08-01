@@ -13,4 +13,4 @@ Fixes #issue_number.
 ### Checklist
 
 <!-- change [ ] to [x] to mark the checkbox -->
--   [ ] I have read the [Contribution Guidelines](https://github.com/zyrouge/symphony/wiki/Contributions-Guidelines#pull-requests).
+-   [ ] I have read the [Contribution Guidelines](https://github.com/Wraithxxx/Symphony/blob/main/CONTRIBUTING.md).

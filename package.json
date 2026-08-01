@@ -1,5 +1,5 @@
 {
-    "name": "@zyrouge/symphony-cli",
+    "name": "@wraithxxx/symphony-cli",
     "version": "0.0.0",
     "private": true,
     "scripts": {
@@ -21,9 +21,9 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/zyrouge/symphony.git"
+        "url": "git+https://github.com/Wraithxxx/Symphony.git"
     },
-    "author": "Zyrouge",
+    "author": "Wraithxxx",
     "license": "AGPL-3.0",
     "devDependencies": {
         "@types/archiver": "^6.0.3",

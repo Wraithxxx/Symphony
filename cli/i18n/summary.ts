@@ -44,7 +44,7 @@ Read [Translations Guide](https://github.com/zyrouge/symphony/wiki/Translations-
 ${Object.entries(summary.individual)
     .map(([locale, x]) => {
         const status = x.set.percent === 100 ? "✅" : "⚠️";
-        const url = `https://github.com/zyrouge/symphony/blob/main/i18n/${locale}.toml`;
+        const url = `https://github.com/Wraithxxx/Symphony/blob/main/i18n/${locale}.toml`;
         const percentage = `${x.set.percent.toFixed(1)}%`;
         return `| ${status} | [\`${locale}\`](${url}) | ${percentage} |`;
     })

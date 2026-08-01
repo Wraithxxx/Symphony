@@ -68,5 +68,5 @@ body:
       attributes:
           label: Contribution Guidelines
           options:
-              - label: I agree to follow the [Contribution Guidelines](https://github.com/zyrouge/symphony/wiki/Contributions-Guidelines#issues).
+              - label: I agree to follow the [Contribution Guidelines](https://github.com/Wraithxxx/Symphony/blob/main/CONTRIBUTING.md).
                 required: true
